@@ -1,0 +1,9 @@
+action_endpoint:
+  url: "http://rasa-actions:3001/webhook"  # URL for the action server
+
+tracker_store:
+  type: "SQL"
+  dialect: "sqlite"  # the dialect used to interact with the database
+  db: "tracker.db"  # path to the database file
+  username: ""  # username for the database (if applicable)
+  password: ""  # password for the database (if applicable)

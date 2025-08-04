@@ -1,0 +1,64 @@
+version: "3.1"
+
+intents:
+  - greet
+  - goodbye
+  - ask_question
+  - affirm
+  - deny
+  - mood_great
+  - mood_unhappy
+  - bot_challenge
+  - ask_name
+  - provide_name
+  - ask_help
+  - ask_information
+
+entities:
+  - topic
+  - name
+
+slots:
+  topic:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: from_entity
+        entity: topic
+  name:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: from_entity
+        entity: name
+
+responses:
+  utter_greet:
+    - text: "Hello! How can I assist you today?"
+  utter_goodbye:
+    - text: "Goodbye! Have a great day!"
+  utter_ask_question:
+    - text: "What topic would you like to know more about?"
+  utter_information:
+    - text: "Here's the information you requested."
+  utter_default_fallback:
+    - text: "I'm sorry, I didn't quite understand that. Could you rephrase?"
+  utter_ask_name:
+    - text: "What is your name?"
+  utter_thanks:
+    - text: "Thank you for sharing that!"
+  utter_help:
+    - text: "How can I help you today?"
+  utter_mood_great:
+    - text: "That's wonderful! I'm glad you're feeling good."
+  utter_mood_unhappy:
+    - text: "I'm sorry to hear that. Is there anything I can do to help?"
+  utter_bot_challenge:
+    - text: "I am a bot, powered by Rasa."
+  utter_happy:
+    - text: "Great! I'm glad I could help."
+  utter_deny:
+    - text: "Okay, no problem. Let me know if you need anything else."
+
+actions:
+  - action_handle_question

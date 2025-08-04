@@ -1,0 +1,62 @@
+version: "3.1"
+
+stories:
+  - story: greet and ask for name
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: ask_name
+      - action: utter_ask_name
+
+  - story: provide name and ask for help
+    steps:
+      - intent: provide_name
+        entities:
+          - name: "John"
+      - action: utter_thanks
+      - intent: ask_help
+      - action: utter_help
+
+  - story: farewell
+    steps:
+      - intent: goodbye
+      - action: utter_goodbye
+
+  - story: happy path
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: mood_great
+      - action: utter_mood_great
+
+  - story: sad path
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: mood_unhappy
+      - action: utter_mood_unhappy
+
+  - story: ask information
+    steps:
+      - intent: ask_information
+      - action: utter_information
+
+  - story: ask question
+    steps:
+      - intent: ask_question
+      - action: utter_ask_question
+
+  - story: bot challenge
+    steps:
+      - intent: bot_challenge
+      - action: utter_bot_challenge
+
+  - story: user affirms
+    steps:
+      - intent: affirm
+      - action: utter_happy
+
+  - story: user denies
+    steps:
+      - intent: deny
+      - action: utter_deny

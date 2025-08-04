@@ -1,0 +1,18 @@
+FROM rasa/rasa:3.6.16
+
+# Copy app files
+COPY . /app/
+WORKDIR /app
+
+# Train the model
+RUN rasa train
+
+# Set environment variables
+ENV RASA_PORT=3000
+ENV RASA_HOST=0.0.0.0
+
+# Expose the port
+EXPOSE 3000
+
+# Start Rasa server with production settings
+CMD ["run", "--enable-api", "--cors", "*", "--port", "3000", "--host", "0.0.0.0"]

@@ -1,0 +1,13 @@
+FROM rasa/rasa-sdk:3.6.0
+
+# Copy actions file
+COPY actions /app/actions
+
+# Set environment variables
+ENV RASA_ACTION_PORT=3001
+ENV RASA_ACTION_HOST=0.0.0.0
+
+# Expose the port
+EXPOSE 3001
+
+CMD ["start", "--actions", "actions", "--port", "3001", "--host", "0.0.0.0"]

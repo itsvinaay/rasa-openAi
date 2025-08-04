@@ -1,0 +1,18 @@
+# Rasa cache and temporary files
+.rasa/
+*.db
+__pycache__/
+*.pyc
+
+# Environment variables
+.env
+
+# Keras cache
+.keras/
+
+# Models (optional - you might want to keep these)
+# models/
+
+# IDE files
+.vscode/
+.idea/

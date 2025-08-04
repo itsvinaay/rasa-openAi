@@ -1,0 +1,22 @@
+version: "3.1"
+
+rules:
+  - rule: Greet the user
+    steps:
+      - intent: greet
+      - action: utter_greet
+
+  - rule: Provide information
+    steps:
+      - intent: ask_information
+      - action: utter_information
+
+  - rule: Goodbye
+    steps:
+      - intent: goodbye
+      - action: utter_goodbye
+
+  - rule: Fallback
+    steps:
+      - intent: nlu_fallback
+      - action: utter_default_fallback

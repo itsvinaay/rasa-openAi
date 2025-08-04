@@ -1,0 +1,20 @@
+version: '3.1'
+
+services:
+  rasa:
+    build: .
+    container_name: rasa_server
+    ports:
+      - "5005:5005"
+    volumes:
+      - ./:/app
+    command: ["run", "--enable-api", "--cors", "*", "--debug"]
+
+  action_server:
+    image: rasa/rasa-sdk:latest
+    container_name: rasa_actions
+    volumes:
+      - ./actions:/app/actions
+    ports:
+      - "5055:5055"
+    command: ["start"]

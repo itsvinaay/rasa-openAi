@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  rasa:
+    build:
+      context: .
+      dockerfile: Dockerfile.prod
+    ports:
+      - "3000:3000"
+    depends_on:
+      - rasa-actions
+    environment:
+      - RASA_PORT=3000
+      - RASA_HOST=0.0.0.0
+    volumes:
+      - ./models:/app/models
+      - ./data:/app/data
+
+  rasa-actions:
+    build:
+      context: .
+      dockerfile: Dockerfile.actions
+    ports:
+      - "3001:3001"
+    environment:
+      - RASA_ACTION_PORT=3001
+      - RASA_ACTION_HOST=0.0.0.0
