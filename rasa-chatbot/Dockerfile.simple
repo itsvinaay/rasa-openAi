@@ -3,10 +3,11 @@ FROM rasa/rasa:3.6.16
 # Set the working directory
 WORKDIR /app
 
-# Copy project files
-COPY . /app
+# Copy project files and set ownership
+COPY --chown=1001:1001 . /app
 
 # Create necessary directories
+USER 1001
 RUN mkdir -p /app/models
 
 # Expose the port Rasa runs on
