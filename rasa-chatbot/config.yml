@@ -1,4 +1,4 @@
-language: yaml
+language: en
 pipeline:
 - name: "WhitespaceTokenizer"
 - name: "RegexFeaturizer"

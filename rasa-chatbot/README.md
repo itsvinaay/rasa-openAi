@@ -52,6 +52,39 @@ rasa-chatbot
 - You can interact with the chatbot through the command line or integrate it with messaging platforms by configuring the `credentials.yml` file.
 - Modify the `data/nlu.yml`, `data/rules.yml`, and `data/stories.yml` files to customize the chatbot's behavior and responses.
 
+## Running the Bot
+
+### For Local Development
+
+### 1. Start the Rasa Server
+
+```bash
+rasa run --enable-api --cors "*" --debug
+```
+
+### 2. Start the Action Server (in a separate terminal)
+
+```bash
+rasa run actions
+```
+
+Or using Docker:
+```bash
+docker run -p 5055:5055 -v $(pwd):/app rasa-bot run actions
+```
+
+### For Production Deployment (Coolify)
+
+See `coolify-deploy.md` for detailed deployment instructions.
+
+Quick deployment using Docker Compose:
+```bash
+# Use the production compose file
+docker-compose -f docker-compose.coolify.yml up -d
+```
+
+### 3. Interacting with the Bot
+
 ## Contributing
 
 Feel free to contribute to this project by submitting issues or pull requests. Make sure to follow the project's coding standards and guidelines.

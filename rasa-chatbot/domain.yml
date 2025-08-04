@@ -61,4 +61,3 @@ responses:
     - text: "Okay, no problem. Let me know if you need anything else."
 
 actions:
-  - action_handle_question

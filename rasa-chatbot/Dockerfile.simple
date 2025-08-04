@@ -1,0 +1,16 @@
+FROM rasa/rasa:3.6.16
+
+# Set the working directory
+WORKDIR /app
+
+# Copy project files
+COPY . /app
+
+# Create necessary directories
+RUN mkdir -p /app/models
+
+# Expose the port Rasa runs on
+EXPOSE 5005
+
+# Default command - train on startup instead of during build
+CMD ["sh", "-c", "rasa train && rasa run --enable-api --cors '*' --host 0.0.0.0 --port 5005"]
