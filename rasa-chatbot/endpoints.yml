@@ -1,5 +1,5 @@
 action_endpoint:
-  url: "http://rasa-actions:3001/webhook"  # URL for the action server
+  url: "http://rasa-actions:5055/webhook"  # URL for the action server
 
 tracker_store:
   type: "SQL"

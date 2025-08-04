@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+  rasa-server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "5005:5005"
+    environment:
+      - RASA_HOST=0.0.0.0
+      - RASA_PORT=5005
+    volumes:
+      - ./models:/app/models
+    command: ["run", "--enable-api", "--cors", "*", "--host", "0.0.0.0", "--port", "5005"]
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5005/version"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  rasa-actions:
+    build:
+      context: .
+      dockerfile: Dockerfile.actions
+    ports:
+      - "5055:5055"
+    environment:
+      - RASA_ACTION_HOST=0.0.0.0
+      - RASA_ACTION_PORT=5055
+    command: ["run", "actions", "--host", "0.0.0.0", "--port", "5055"]
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5055/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
